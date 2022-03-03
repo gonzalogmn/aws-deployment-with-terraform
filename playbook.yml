@@ -1,0 +1,27 @@
+---
+- name: deploy api
+
+  hosts: default
+  become: true
+  become_method: sudo
+
+  tasks:
+    - name: get local jar
+      become: no
+      local_action: shell ls ./demo-api/target/*.jar
+      register: file_name
+      tags: test
+
+    - name: upload jar file to server
+      tags:
+        - upload
+        - test
+      copy:
+        src: "{{ file_name.stdout }}"
+        dest: /home/
+      when: file_name.stdout != ""
+
+
+    - name: start demo-api
+      shell: "nohup java -jar /home/{{ file_name.stdout }} &"
+      tags: start
