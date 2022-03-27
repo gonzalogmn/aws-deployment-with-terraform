@@ -1,5 +1,5 @@
 resource "aws_lb" "web" {
-  name               = "packer-nginx"
+  name               = "demo-api-lb"
   internal           = false
   load_balancer_type = "application"
   security_groups = [
@@ -20,7 +20,7 @@ resource "aws_lb_target_group" "web" {
   name     = "web-tg"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = aws_vpc.packer.id
+  vpc_id   = aws_vpc.vpc.id
 }
 
 

@@ -14,7 +14,7 @@ terraform {
     kms_key_id              = "alias/terraform-bucket-key"
     dynamodb_table          = "terraform-state"
     shared_credentials_file = "$HOME/.aws/credentials"
-    profile                 = "admin-ecs-deployment-demo"
+    profile                 = "admin-ec2-deployment-demo"
   }
 }
 

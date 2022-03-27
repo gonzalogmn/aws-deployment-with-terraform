@@ -1,5 +1,5 @@
 resource "aws_default_security_group" "internal" {
-  vpc_id = aws_vpc.packer.id
+  vpc_id = aws_vpc.vpc.id
 
   tags = {
     Name = "default internal sg"
@@ -24,10 +24,10 @@ resource "aws_default_security_group" "internal" {
 }
 
 resource "aws_security_group" "web" {
-  vpc_id = aws_vpc.packer.id
+  vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "web sg for nginx"
+    Name = "web sg for demo-api"
   }
 
   ingress {

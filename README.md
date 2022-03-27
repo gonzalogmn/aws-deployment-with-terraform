@@ -58,7 +58,7 @@ This will generate the required S3 backend to host Terraform state file.
 Create `terraform/terraform.tfvars` file with this content:
 
 ```
-ami_id = <YOUR_AMI_ID>
+ami_id = <YOUR_AMI_ID> # to get this you will need to execute make upload-ami in order to generate an AMI
 ```
 
 ### Configure `aws-nuke`
@@ -111,7 +111,7 @@ aws ec2 describe-snapshots --owner self # Find snapshot id
 aws ec2 delete-snapshot --snapshot-id <your-snap-id> # Delete snapshot
 
 # To be able to delete all remaining resources
-aws-nuke -c utils/aws-nuke-config.yml --profile admin-ecs-deployment-demo --no-dry-run
+aws-nuke -c utils/aws-nuke-config.yml --profile admin-ec2-deployment-demo --no-dry-run
 
 # Last command will delete also default VPC. To generate again a new default VPC, execute next command:
 aws ec2 create-default-vpc

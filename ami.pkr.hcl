@@ -1,5 +1,5 @@
 source "amazon-ebs" "demo-api" {
-  profile         = "admin-ecs-deployment-demo"
+  profile         = "admin-ec2-deployment-demo"
   ssh_timeout     = "30s"
   region          = "eu-central-1"
   source_ami      = "ami-0db9040eb3ab74509" // amazon linux 2

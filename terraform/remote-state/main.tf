@@ -65,15 +65,3 @@ resource "aws_dynamodb_table" "terraform-state" {
     type = "S"
   }
 }
-
-resource "aws_ecr_repository" "aws-ecr" {
-  name = var.app_name
-  tags = {
-    Name        = var.app_name
-    Environment = var.app_environment
-  }
-}
-
-output "aws_ecr_repository_url" {
-  value = aws_ecr_repository.aws-ecr.repository_url
-}

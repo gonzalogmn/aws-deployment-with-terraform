@@ -1,9 +1,9 @@
 resource "aws_s3_bucket" "logs" {
-  bucket        = "com.myorg.logs"
+  bucket        = "es.nextdigital.demoapi"
   acl           = "private"
   force_destroy = true
   tags = {
-    Name        = "nginx cluster access logs"
+    Name        = "demo-api access logs"
     Environment = "Dev"
   }
 }
