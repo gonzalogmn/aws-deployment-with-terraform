@@ -10,6 +10,11 @@ resource "aws_launch_template" "web" {
   vpc_security_group_ids = [
     aws_default_security_group.internal.id,
   ]
+  user_data = (base64encode(<<-EOF
+              #!/bin/bash
+              nohup java -jar /home/demo-api-${var.app_version}.jar &
+              EOF
+  ))
 }
 
 resource "aws_autoscaling_group" "web" {

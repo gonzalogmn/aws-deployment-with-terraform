@@ -22,8 +22,6 @@
       when: file_name.stdout != ""
 
     - name: install openjdk
-      command: sudo yum install -y java-1.8.0-openjdk
-      
-    - name: start demo-api
-      shell: "nohup java -jar /home/{{ file_name.stdout }} &"
+      yum:
+        name: java-1.8.0-openjdk
       tags: start

@@ -18,9 +18,12 @@ resource "aws_lb" "web" {
 
 resource "aws_lb_target_group" "web" {
   name     = "web-tg"
-  port     = 80
+  port     = 8080
   protocol = "HTTP"
   vpc_id   = aws_vpc.vpc.id
+  health_check {
+    port = 8080
+  }
 }
 
 
